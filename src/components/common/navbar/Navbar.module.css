@@ -1,0 +1,152 @@
+/* Usando as variáveis de cor definidas no seu index.css */
+.navbar {
+  background-color: var(--cor-superficie);
+  box-shadow: var(--sombra-padrao);
+  padding: 0.8rem 2rem;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+}
+
+.navLogo {
+  color: var(--cor-secundaria);
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.navMenu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+}
+
+.navItem {
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.navLink {
+  color: var(--cor-texto-secundario);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 25px; /* Ajuste para centralizar */
+  left: 0;
+  background-color: var(--cor-primaria);
+  transition: width 0.3s ease;
+}
+
+.navLink:hover, .navLink.active {
+  color: var(--cor-primaria);
+}
+
+.navLink.active::after {
+  width: 100%;
+}
+
+.navAuth {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.userName {
+  color: var(--cor-texto-secundario);
+  font-size: 0.9rem;
+}
+
+.navButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--cor-borda);
+  background-color: transparent;
+  color: var(--cor-texto-principal);
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.navButton:hover {
+  background-color: #f8f9fa;
+  border-color: #c6c9cc;
+}
+
+.menuIcon {
+  display: none; /* Escondido por padrão em telas grandes */
+}
+
+
+/* --- ESTILOS PARA TELAS PEQUENAS (RESPONSIVIDADE) --- */
+@media (max-width: 960px) {
+  .navMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    left: -100%; /* Começa escondido fora da tela */
+    opacity: 1;
+    transition: all 0.5s ease;
+    background: var(--cor-superficie);
+    padding: 2rem 0;
+  }
+
+  .navMenu.active {
+    left: 0; /* Move o menu para dentro da tela */
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .navItem {
+    height: auto;
+  }
+
+  .navLink::after {
+    bottom: -5px; /* Ajuste para o menu mobile */
+  }
+
+  .navAuth {
+    display: none; /* Esconde os botões da barra principal, eles devem ser recriados no menu se necessário */
+  }
+
+  .menuIcon {
+    display: block; /* Mostra o ícone "hambúrguer" */
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--cor-secundaria);
+  }
+}
